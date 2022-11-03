@@ -1,0 +1,60 @@
+import random
+bank1 = 0
+bank2 = 0
+turn = 1
+score1 = 0
+score2 = 0
+while 100 > bank1 and 100 > bank2:
+    while turn == 1:
+        try:
+            x = random.randint(1,6)
+            print(f"player one rolled a: {x}")
+            score1 = x + score1
+            if x == 1:
+                print(f"fail, next player, player one bank: {bank1}")
+                score1 = 0
+                turn = 2
+            if 6 >= x > 1:
+                print(f"player one current score: {score1}")
+                q1 = input("roll again one? y for 'yes', ENTER for 'no' ")
+                if q1 == "y":
+                    turn = 1
+                    continue
+                else:
+                    bank1 = bank1 + score1
+                    print(f"player one current bank: {bank1}")
+                    if bank1 >= 100:
+                        print("PLAYER ONE IS WINNER!")
+                        break
+                    turn = 2
+                    score1 = 0
+
+        except:
+            print("invalid answer")
+            turn = 1
+            continue
+    while turn == 2:
+        try:
+            x = random.randint(1, 6)
+            print(f"player two rolled a: {x}")
+            score2 = x + score2
+            if x == 1:
+                print(f"fail, next player, player two bank: {bank2}")
+                score2 = 0
+                turn = 1
+            if 6 >= x > 1:
+                print(f"player two current score: {score2}")
+                q2 = input("roll again player two? y for 'yes', ENTER for 'no' ")
+                if q2 == "y":
+                    turn = 2
+                    continue
+                else:
+                    bank2 = bank2 + score2
+                    print(f"player two current bank: {bank2}")
+                    if bank2 >= 100:
+                        print("PLAYER TWO IS WINNER!")
+                        break
+                    turn = 1
+                    score2 = 0
+        except:
+            print("invalid answer")
